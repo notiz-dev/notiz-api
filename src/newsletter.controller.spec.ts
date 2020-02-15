@@ -1,22 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
+import { NewsletterController } from './newsletter.controller';
 import { AppService } from './app.service';
 
 describe('AppController', () => {
-  let appController: AppController;
+  let newsletterController: NewsletterController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
+      controllers: [NewsletterController],
       providers: [AppService],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    newsletterController = app.get<NewsletterController>(NewsletterController);
   });
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+      expect(newsletterController.getHello()).toBe('Hello World!');
     });
   });
 });
