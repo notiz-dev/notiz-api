@@ -16,10 +16,10 @@ export class NewsletterController {
     return this.appService.getHello();
   }
 
-  // @Get('newsletter')
-  // async newsletter(): Promise<Newsletter[]> {
-  //   return this.prisma.newsletter.findMany();
-  // }
+  @Get('newsletter')
+  async newsletter(): Promise<Newsletter[]> {
+    return this.prisma.newsletter.findMany();
+  }
 
   @Post('newsletter')
   async newsletterSignup(
