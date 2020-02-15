@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, ConflictException } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PrismaService } from './services/prisma.service';
 import { Newsletter } from './newsletter';
