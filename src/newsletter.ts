@@ -10,5 +10,7 @@ export class Newsletter {
   @ApiProperty()
   email: string;
   @ApiProperty()
-  enabled: boolean;
+  subscribed: boolean;
+  @ApiProperty()
+  confirmed: boolean;
 }

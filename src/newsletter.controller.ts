@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, NotFoundException } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PrismaService } from './services/prisma.service';
 import { Newsletter } from './newsletter';
-import { NewsletterSignupDto } from './newsletter.dto';
+import { SubscribeDto } from './subscribe.dto';
 
 @Controller()
 export class NewsletterController {
@@ -16,28 +16,52 @@ export class NewsletterController {
     return this.appService.getHello();
   }
 
-  @Get('newsletter')
+  @Get('subscribe')
   async newsletter(): Promise<Newsletter[]> {
     return this.prisma.newsletter.findMany();
   }
 
-  @Post('newsletter')
-  async newsletterSignup(
-    @Body() { email }: NewsletterSignupDto,
-  ): Promise<Newsletter> {
-    let signup = await this.prisma.newsletter.findOne({ where: { email } });
+  @Post('subscribe')
+  async subscribe(@Body() { email }: SubscribeDto): Promise<Newsletter> {
+    let subscribption = await this.prisma.newsletter.findOne({
+      where: { email },
+    });
 
-    if (signup) {
-      signup = await this.prisma.newsletter.update({
+    if (subscribption) {
+      subscribption = await this.prisma.newsletter.update({
         where: { email },
-        data: { enabled: true },
+        data: { subscribed: true },
       });
     } else {
-      signup = await this.prisma.newsletter.create({
+      subscribption = await this.prisma.newsletter.create({
         data: { email },
       });
     }
 
-    return signup;
+    return subscribption;
+  }
+
+  @Post('confirm')
+  async confirm(@Body() { email }: SubscribeDto) {
+    await this.prisma.newsletter.update({
+      where: { email },
+      data: { subscribed: false },
+    });
+  }
+
+  @Post('unsubscribe')
+  async unsubscribe(@Body() { email }: SubscribeDto) {
+    // const subscribption = await this.prisma.newsletter.findOne({
+    //   where: { email },
+    // });
+
+    // if (subscribption) {
+    await this.prisma.newsletter.update({
+      where: { email },
+      data: { subscribed: false },
+    });
+    // } else {
+    //   throw new NotFoundException();
+    // }
   }
 }
