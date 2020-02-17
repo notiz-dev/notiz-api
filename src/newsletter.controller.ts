@@ -5,16 +5,13 @@ import {
   Body,
   BadRequestException,
 } from '@nestjs/common';
-import { AppService } from './app.service';
 import { PrismaService } from './services/prisma.service';
 import { SubscribeDto } from './subscribe.dto';
+import { MailService } from './services/mail.service';
 
 @Controller()
 export class NewsletterController {
-  constructor(
-    private readonly appService: AppService,
-    private prisma: PrismaService,
-  ) {}
+  constructor(private prisma: PrismaService, private mail: MailService) {}
 
   @Get()
   getHello(): string {
@@ -23,7 +20,7 @@ export class NewsletterController {
 
   @Post('subscribe')
   async subscribe(@Body() { email }: SubscribeDto) {
-    const subscription = await this.prisma.newsletter.findOne({
+    let subscription = await this.prisma.newsletter.findOne({
       where: { email },
     });
 
@@ -33,9 +30,15 @@ export class NewsletterController {
         data: { subscribed: true },
       });
     } else {
-      await this.prisma.newsletter.create({
+      subscription = await this.prisma.newsletter.create({
         data: { email },
       });
+
+      await this.mail.sendMail(
+        email,
+        'Confirm your subscription',
+        `Hey thanks for taking an interest in notiz.dev. Please confirm your email for us. https://notiz.dev/confirm-subscription/${subscription.id}`,
+      );
     }
   }
 
