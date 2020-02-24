@@ -38,7 +38,7 @@ export class NewsletterController {
       await this.mail.sendMail(
         email,
         'Confirm your subscription',
-        `Hey thanks for taking an interest in notiz.dev. Please confirm your email for us. https://notiz.dev/confirm-subscription/${subscription.id}`,
+        `Hey thanks for taking an interest in notiz.dev. Please confirm your email for us. https://notiz.dev/confirm-subscription?uuid=${subscription.id}`,
       );
     }
   }
