@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from './services/prisma.service';
 import { SubscribeDto } from './subscribe.dto';
+import { ConfirmDto } from './confirm.dto';
 import { MailService } from './services/mail.service';
 
 @Controller()
@@ -43,10 +44,10 @@ export class NewsletterController {
   }
 
   @Post('confirm')
-  async confirm(@Body() { email }: SubscribeDto) {
+  async confirm(@Body() { uuid }: ConfirmDto) {
     try {
       await this.prisma.newsletter.update({
-        where: { email },
+        where: { id: uuid },
         data: { confirmed: true },
       });
     } catch (error) {
