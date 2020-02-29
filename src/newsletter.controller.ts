@@ -9,6 +9,8 @@ import { PrismaService } from './services/prisma.service';
 import { SubscribeDto } from './subscribe.dto';
 import { ConfirmDto } from './confirm.dto';
 import { MailService } from './services/mail.service';
+import { subscriptionTemplate } from './mails/subscription.template';
+import { confirmedSubscriptionTemplate } from './mails/confirmed-subscription.template';
 
 @Controller()
 export class NewsletterController {
@@ -35,10 +37,10 @@ export class NewsletterController {
         data: { email },
       });
 
-      await this.mail.sendMail(
+      await this.mail.sendHTMLMail(
         email,
         'Confirm your subscription',
-        `Hey thanks for taking an interest in notiz.dev. Please confirm your email for us. https://notiz.dev/confirm-subscription?uuid=${subscription.id}`,
+        subscriptionTemplate(subscription.id),
       );
     }
   }
@@ -46,10 +48,16 @@ export class NewsletterController {
   @Post('confirm')
   async confirm(@Body() { uuid }: ConfirmDto) {
     try {
-      await this.prisma.newsletter.update({
+      const newsletter = await this.prisma.newsletter.update({
         where: { id: uuid },
         data: { confirmed: true },
       });
+
+      await this.mail.sendHTMLMail(
+        newsletter.email,
+        'Subscription confirmed',
+        confirmedSubscriptionTemplate(newsletter.id),
+      );
     } catch (error) {
       throw new BadRequestException();
     }

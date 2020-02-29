@@ -24,12 +24,12 @@ export class MailService implements OnModuleInit, OnModuleDestroy {
     this.transporter.close();
   }
 
-  async sendMail(to: string, subject: string, text: string) {
+  async sendHTMLMail(to: string, subject: string, html: string) {
     return await this.transporter.sendMail({
-      from: `"Notiz" <${this.configService.get('MAIL_USER')}>`,
-      to: to,
-      subject: subject,
-      text: text,
+      from: `"notiz.dev" <${this.configService.get('MAIL_USER')}>`,
+      to,
+      subject,
+      html,
     });
   }
 }
