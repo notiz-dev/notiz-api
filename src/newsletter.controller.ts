@@ -64,10 +64,10 @@ export class NewsletterController {
   }
 
   @Post('unsubscribe')
-  async unsubscribe(@Body() { email }: SubscribeDto) {
+  async unsubscribe(@Body() { uuid }: ConfirmDto) {
     try {
       await this.prisma.newsletter.update({
-        where: { email },
+        where: { id: uuid },
         data: { subscribed: false },
       });
     } catch (error) {
