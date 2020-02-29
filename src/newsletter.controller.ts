@@ -27,7 +27,7 @@ export class NewsletterController {
       where: { email },
     });
 
-    if (subscription) {
+    if (subscription && subscription.confirmed) {
       await this.prisma.newsletter.update({
         where: { email },
         data: { subscribed: true },
@@ -50,7 +50,7 @@ export class NewsletterController {
     try {
       const newsletter = await this.prisma.newsletter.update({
         where: { id: uuid },
-        data: { confirmed: true },
+        data: { subscribed: true, confirmed: true },
       });
 
       await this.mail.sendHTMLMail(
