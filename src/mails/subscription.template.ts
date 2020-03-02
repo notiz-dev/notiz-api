@@ -6,7 +6,6 @@ export const subscriptionTemplate = (uuid: string) => {
     `<a href="https://notiz.dev/confirm-subscription?uuid=${uuid}">https://notiz.dev/confirm-subscription?uuid=${uuid}</a></<a>` +
     "<p>If you received this email by mistake, simply delete it. You won't be subscribed if you don't click the confirmation link above.</p>" +
     '<p>Cheers<br>' +
-    '<a href="https://notiz.dev">notiz.dev</a> Team</>' +
-    `<p><a href="https://notiz.dev/unsubscribe?uuid=${uuid}">Unsubscribe</a></p>`
+    '<a href="https://notiz.dev">notiz.dev</a> Team</>'
   );
 };
