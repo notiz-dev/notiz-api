@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { NewsletterController } from './newsletter.controller';
-import { AppService } from './app.service';
+import { PrismaService } from './services/prisma.service';
+import { MailService } from './services/mail.service';
+import { ConfigService } from '@nestjs/config';
 
 describe('AppController', () => {
   let newsletterController: NewsletterController;
@@ -8,15 +10,13 @@ describe('AppController', () => {
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [NewsletterController],
-      providers: [AppService],
+      providers: [PrismaService, MailService, ConfigService],
     }).compile();
 
     newsletterController = app.get<NewsletterController>(NewsletterController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(newsletterController.getHello()).toBe('Hello World!');
-    });
+  it('should be defined', () => {
+    expect(newsletterController).toBeDefined();
   });
 });
