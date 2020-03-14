@@ -17,7 +17,7 @@ export class NewsletterController {
   constructor(private prisma: PrismaService, private mail: MailService) {}
 
   @Get()
-  getHello(): string {
+  getHello() {
     return 'notiz.dev';
   }
 
