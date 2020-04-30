@@ -18,7 +18,7 @@ export class NewsletterController {
 
   @Get()
   getHello() {
-    return 'notiz.dev';
+    return '<a href="https://notiz.dev">notiz.dev</a>';
   }
 
   @Post('subscribe')
