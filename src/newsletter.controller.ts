@@ -27,22 +27,17 @@ export class NewsletterController {
       where: { email },
     });
 
-    if (subscription && subscription.confirmed) {
-      await this.prisma.newsletter.update({
-        where: { email },
-        data: { subscribed: true },
-      });
-    } else {
+    if (!subscription) {
       subscription = await this.prisma.newsletter.create({
         data: { email },
       });
-
-      await this.mail.sendHTMLMail(
-        email,
-        'Confirm your subscription',
-        subscriptionTemplate(subscription.id),
-      );
     }
+
+    await this.mail.sendHTMLMail(
+      email,
+      'Confirm your subscription',
+      subscriptionTemplate(subscription.id),
+    );
   }
 
   @Post('confirm')
