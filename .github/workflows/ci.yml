@@ -15,6 +15,4 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL}}
-      - run: npm test
+      - run: npm run build

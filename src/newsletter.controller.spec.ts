@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { NewsletterController } from './newsletter.controller';
-import { PrismaService } from './services/prisma.service';
+import { PrismaService } from 'nestjs-prisma';
 import { MailService } from './services/mail.service';
 import { ConfigService } from '@nestjs/config';
 
