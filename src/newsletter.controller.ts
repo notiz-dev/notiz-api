@@ -23,7 +23,7 @@ export class NewsletterController {
 
   @Post('subscribe')
   async subscribe(@Body() { email }: SubscribeDto) {
-    let subscription = await this.prisma.newsletter.findOne({
+    let subscription = await this.prisma.newsletter.findUnique({
       where: { email },
     });
 
