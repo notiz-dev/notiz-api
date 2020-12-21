@@ -5,7 +5,7 @@ import {
   Body,
   BadRequestException,
 } from '@nestjs/common';
-import { PrismaService } from './services/prisma.service';
+import { PrismaService } from 'nestjs-prisma';
 import { SubscribeDto } from './subscribe.dto';
 import { ConfirmDto } from './confirm.dto';
 import { MailService } from './services/mail.service';
