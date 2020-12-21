@@ -1,11 +1,12 @@
 -- CreateTable
 CREATE TABLE "Newsletter" (
     "id" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
     "email" TEXT NOT NULL,
     "subscribed" BOOLEAN NOT NULL DEFAULT false,
     "confirmed" BOOLEAN NOT NULL DEFAULT false,
+
     PRIMARY KEY ("id")
 );
 
