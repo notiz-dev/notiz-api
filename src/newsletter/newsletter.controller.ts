@@ -1,25 +1,21 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  BadRequestException,
-} from '@nestjs/common';
+import { confirmedSubscriptionTemplate } from './../mails/confirmed-subscription.template';
+import { subscriptionTemplate } from './../mails/subscription.template';
+import { MailService } from './../services/mail.service';
+import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
+import { NewsletterService } from './newsletter.service';
+import { ConfirmDto } from './dto/confirm.dto';
 import { PrismaService } from 'nestjs-prisma';
-import { SubscribeDto } from './subscribe.dto';
-import { ConfirmDto } from './confirm.dto';
-import { MailService } from './services/mail.service';
-import { subscriptionTemplate } from './mails/subscription.template';
-import { confirmedSubscriptionTemplate } from './mails/confirmed-subscription.template';
+import { SubscribeDto } from './dto/subscribe.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Newsletter')
 @Controller()
 export class NewsletterController {
-  constructor(private prisma: PrismaService, private mail: MailService) {}
-
-  @Get()
-  getHello() {
-    return '<a href="https://notiz.dev">notiz.dev</a>';
-  }
+  constructor(
+    private readonly newsletterService: NewsletterService,
+    private prisma: PrismaService,
+    private mail: MailService,
+  ) {}
 
   @Post('subscribe')
   async subscribe(@Body() { email }: SubscribeDto) {
