@@ -22,7 +22,11 @@ export class NewsletterService {
     await this.mailer.sendMail({
       to: email,
       subject: 'Confirm your subscription',
-      html: subscriptionTemplate(subscription.id),
+      template: 'confirm-subscription',
+      context: {
+        email: email,
+        uuid: subscription.id
+      },
     });
   }
 

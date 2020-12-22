@@ -11,8 +11,8 @@ export class MailerConfigService implements MailerOptionsFactory {
     return {
       transport: {
         host: this.configService.get('MAIL_HOST'),
-        port: 465,
-        secure: true,
+        port: this.configService.get('MAIL_PORT'),
+        secure: false,
         auth: {
           user: this.configService.get('MAIL_USER'),
           pass: this.configService.get('MAIL_PASSWORD'),
@@ -22,7 +22,7 @@ export class MailerConfigService implements MailerOptionsFactory {
         from: `"notiz.dev" <${this.configService.get('MAIL_USER')}>`,
       },
       template: {
-        dir: `${process.cwd()}/templates/`,
+        dir: `${process.cwd()}/src/templates/`,
         adapter: new HandlebarsAdapter(),
         options: { strict: true },
       },

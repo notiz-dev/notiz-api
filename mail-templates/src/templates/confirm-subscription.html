@@ -1,0 +1,107 @@
+---
+title: 'Confirm your email address'
+preheader: 'Please confirm your email address in order to subscribe to our newsletter'
+---
+
+<extends src="src/layouts/master.html">
+  <block name="template">
+    <table class="w-full font-sans">
+      <tr>
+        <td align="center" class="bg-cool-gray-200">
+          <table class="w-600 sm:w-full">
+            <tr>
+              <td class="p-48 sm:py-32 sm:px-24 text-center">
+                <a href="{{page.notiz.website}}">
+                  <img src="images/notiz.png" width="100" alt="notiz.dev" />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" class="sm:px-24">
+                <table class="w-full">
+                  <tr>
+                    <td
+                      class="bg-gray-100 dark:bg-gray-900 dark:text-white text-base text-left p-48 sm:px-24 leading-24 rounded"
+                    >
+                      <p>Hello @{{email}},</p>
+                      <p
+                        class="text-2xl sm:leading-32 text-black dark:text-gray-400 font-semibold m-0 mb-24"
+                      >
+                        Is it you we're looking for?
+                      </p>
+                      <p class="m-0 mb-24">
+                        Please confirm your email address by clicking the button
+                        below:
+                      </p>
+                      <table>
+                        <tr>
+                          <th
+                            class="bg-primary hover:bg-primary-light rounded"
+                            style="mso-padding-alt: 16px 24px"
+                          >
+                            <a
+                              href="{{page.notiz.website}}/unsubscribe?uuid=@{{uuid}}"
+                              class="block font-semibold text-white text-base leading-full py-16 px-24 no-underline"
+                            >
+                              Confirm email address &rarr;
+                            </a>
+                          </th>
+                        </tr>
+                      </table>
+                      <table class="w-full">
+                        <tr>
+                          <td class="py-32">
+                            <div class="bg-gray-200 h-px leading-px">
+                              &zwnj;
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                      <p class="m-0 mb-16">
+                        Not sure why you received this email? Please
+                        <a
+                          href="mailto:{{page.notiz.mail}}"
+                          class="text-primary underline hover:no-underline"
+                        >
+                          let us know </a
+                        >.
+                      </p>
+                      <p class="m-0 mb-16">Thanks, <br />The notiz.dev Team</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="h-48"></td>
+                  </tr>
+                  <tr>
+                    <td class="text-center text-gray-600 text-xs px-24">
+                      <p class="m-0 mb-4">
+                        <a
+                          href="https://notiz.dev"
+                          class="text-primary no-underline hover:underline"
+                          >notiz.dev</a
+                        >
+                      </p>
+                      <p class="cursor-default">
+                        <a
+                          href="{{page.notiz.github}}"
+                          class="text-primary no-underline hover:underline"
+                          >GitHub</a
+                        >
+                        &bull;
+                        <a
+                          href="{{page.notiz.twitter}}"
+                          class="text-primary no-underline hover:underline"
+                          >Twitter</a
+                        >
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </block>
+</extends>
