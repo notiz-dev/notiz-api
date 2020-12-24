@@ -1,5 +1,5 @@
 module.exports = {
-  darkMode: "media",
+  darkMode: 'media',
   theme: {
     screens: {
       sm: { max: '600px' },
@@ -24,6 +24,14 @@ module.exports = {
           dark: '#556af3',
         },
       },
+      backgroundImage: (theme) => ({
+        'gradient-145': 'linear-gradient(145deg, var(--tw-gradient-stops))',
+        'gradient-primary': `linear-gradient(145deg, ${theme(
+          'colors.primary.light',
+        )}, ${theme('colors.primary.DEFAULT')}, ${theme(
+          'colors.primary.dark',
+        )})`,
+      }),
       spacing: {
         screen: '100vw',
         full: '100%',
@@ -146,6 +154,9 @@ module.exports = {
         ...theme('spacing'),
       }),
     },
+  },
+  variants: {
+    extend: {},
   },
   corePlugins: {
     animation: false,

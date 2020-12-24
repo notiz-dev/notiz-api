@@ -21,7 +21,7 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                 <table class="w-full">
                   <tr>
                     <td
-                      class="bg-gray-100 dark:bg-gray-900 dark:text-white text-base text-left p-48 sm:px-24 leading-24 rounded"
+                      class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white text-base text-left p-48 sm:px-24 leading-24 rounded"
                     >
                       <p>Hello @{{email}},</p>
                       <p
@@ -36,12 +36,12 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                       <table>
                         <tr>
                           <th
-                            class="bg-primary hover:bg-primary-light rounded"
+                            class="bg-primary bg-gradient-primary hover:bg-primary-light rounded"
                             style="mso-padding-alt: 16px 24px"
                           >
                             <a
                               href="{{page.notiz.website}}/unsubscribe?uuid=@{{uuid}}"
-                              class="block font-semibold text-white text-base leading-full py-16 px-24 no-underline"
+                              class="block font-semibold text-white dark:text-white text-base leading-full py-16 px-24 no-underline"
                             >
                               Confirm email address &rarr;
                             </a>
@@ -51,7 +51,9 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                       <table class="w-full">
                         <tr>
                           <td class="py-32">
-                            <div class="bg-gray-200 h-px leading-px">
+                            <div
+                              class="bg-gray-300 dark:bg-gray-700 h-px leading-px"
+                            >
                               &zwnj;
                             </div>
                           </td>
