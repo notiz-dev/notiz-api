@@ -9,13 +9,7 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
       <tr>
         <td align="center" class="bg-cool-gray-200">
           <table class="w-600 sm:w-full">
-            <tr>
-              <td class="p-48 sm:py-32 sm:px-24 text-center">
-                <a href="{{page.notiz.website}}">
-                  <img src="images/notiz.png" width="100" alt="notiz.dev" />
-                </a>
-              </td>
-            </tr>
+            <component src="src/components/logo.html"></component>
             <tr>
               <td align="center" class="sm:px-24">
                 <table class="w-full">
@@ -23,15 +17,10 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                     <td
                       class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white text-base text-left p-48 sm:px-24 leading-24 rounded"
                     >
-                      <p>Hello @{{email}},</p>
-                      <p
-                        class="text-2xl sm:leading-32 text-black dark:text-gray-400 font-semibold m-0 mb-24"
-                      >
-                        Is it you we're looking for?
-                      </p>
+                      <p class="">Hi @{{email}}. Thanks for subscribing 👏</p>
                       <p class="m-0 mb-24">
-                        Please confirm your email address by clicking the button
-                        below:
+                        You're almost done. Please confirm your email and hit
+                        the button below. We don't spam.
                       </p>
                       <table>
                         <tr>
@@ -43,7 +32,7 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                               href="{{page.notiz.website}}/unsubscribe?uuid=@{{uuid}}"
                               class="block font-semibold text-white dark:text-white text-base leading-full py-16 px-24 no-underline"
                             >
-                              Confirm email address &rarr;
+                              Confirm Email &rarr;
                             </a>
                           </th>
                         </tr>
@@ -60,13 +49,8 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                         </tr>
                       </table>
                       <p class="m-0 mb-16">
-                        Not sure why you received this email? Please
-                        <a
-                          href="mailto:{{page.notiz.mail}}"
-                          class="text-primary underline hover:no-underline"
-                        >
-                          let us know </a
-                        >.
+                        If you received this email by mistake, simply delete it.
+                        You won't be subscribed to our newsletter.
                       </p>
                       <p class="m-0 mb-16">Thanks, <br />The notiz.dev Team</p>
                     </td>
@@ -74,30 +58,7 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                   <tr>
                     <td class="h-48"></td>
                   </tr>
-                  <tr>
-                    <td class="text-center text-gray-600 text-xs px-24">
-                      <p class="m-0 mb-4">
-                        <a
-                          href="https://notiz.dev"
-                          class="text-primary no-underline hover:underline"
-                          >notiz.dev</a
-                        >
-                      </p>
-                      <p class="cursor-default">
-                        <a
-                          href="{{page.notiz.github}}"
-                          class="text-primary no-underline hover:underline"
-                          >GitHub</a
-                        >
-                        &bull;
-                        <a
-                          href="{{page.notiz.twitter}}"
-                          class="text-primary no-underline hover:underline"
-                          >Twitter</a
-                        >
-                      </p>
-                    </td>
-                  </tr>
+                  <component src="src/components/footer.html"></component>
                 </table>
               </td>
             </tr>

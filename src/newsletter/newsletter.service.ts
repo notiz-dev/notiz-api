@@ -21,7 +21,7 @@ export class NewsletterService {
 
     await this.mailer.sendMail({
       to: email,
-      subject: 'Confirm your subscription',
+      subject: 'notiz.dev Newsletter: Please Confirm your Subscription',
       template: 'confirm-subscription',
       context: {
         email: email,
