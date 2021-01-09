@@ -15,5 +15,4 @@ model Newsletter {
   email String @unique
 
   subscribed Boolean @default(false)
-  confirmed  Boolean @default(false)
 }

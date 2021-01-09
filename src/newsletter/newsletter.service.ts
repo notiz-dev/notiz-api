@@ -1,5 +1,3 @@
-import { confirmedSubscriptionTemplate } from './../mails/confirmed-subscription.template';
-import { subscriptionTemplate } from './../mails/subscription.template';
 import { PrismaService } from 'nestjs-prisma';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
@@ -32,18 +30,9 @@ export class NewsletterService {
 
   async confirm(uuid: string) {
     try {
-      const subscription = await this.prisma.newsletter.update({
+      await this.prisma.newsletter.update({
         where: { id: uuid },
-        data: { subscribed: true, confirmed: true },
-      });
-
-      await this.mailer.sendMail({
-        to: subscription.email,
-        subject: 'notiz.dev Newsletter: Subscription Confirmed',
-        template: 'subscription-confirmed',
-        context: {
-          uuid: subscription.id,
-        },
+        data: { subscribed: true },
       });
     } catch (error) {
       throw new BadRequestException();
@@ -52,13 +41,9 @@ export class NewsletterService {
 
   async unsubscribe(uuid: string) {
     try {
-      // TODO delete user
-      await this.prisma.newsletter.update({
+      await this.prisma.newsletter.delete({
         where: { id: uuid },
-        data: { subscribed: false },
       });
-
-      // TODO send mail that the user is unsubscribed succesful
     } catch (error) {
       throw new BadRequestException();
     }
