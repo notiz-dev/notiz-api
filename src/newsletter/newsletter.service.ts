@@ -25,22 +25,25 @@ export class NewsletterService {
       template: 'confirm-subscription',
       context: {
         email: email,
-        uuid: subscription.id
+        uuid: subscription.id,
       },
     });
   }
 
   async confirm(uuid: string) {
     try {
-      const newsletter = await this.prisma.newsletter.update({
+      const subscription = await this.prisma.newsletter.update({
         where: { id: uuid },
         data: { subscribed: true, confirmed: true },
       });
 
       await this.mailer.sendMail({
-        to: newsletter.email,
-        subject: 'Subscription confirmed',
-        html: confirmedSubscriptionTemplate(newsletter.id),
+        to: subscription.email,
+        subject: 'notiz.dev Newsletter: Subscription Confirmed',
+        template: 'subscription-confirmed',
+        context: {
+          uuid: subscription.id,
+        },
       });
     } catch (error) {
       throw new BadRequestException();
