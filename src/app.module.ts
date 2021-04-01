@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from 'nestjs-prisma';
 import { NewsletterModule } from './newsletter/newsletter.module';
 import { MailModule } from './mail/mail.module';
+import { GithubModule } from './github/github.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { MailModule } from './mail/mail.module';
     PrismaModule,
     NewsletterModule,
     MailModule,
+    GithubModule,
   ],
   controllers: [],
   providers: [],
