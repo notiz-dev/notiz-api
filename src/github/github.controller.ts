@@ -1,5 +1,5 @@
 import { Controller, Get, HttpService, Param } from '@nestjs/common';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { GitHubRepo } from './entities/github-repo.entity';
 
 @Controller('github')
