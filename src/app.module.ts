@@ -2,17 +2,14 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from 'nestjs-prisma';
 import { NewsletterModule } from './newsletter/newsletter.module';
-import { MailerModule } from '@nestjs-modules/mailer';
-import { MailerConfigService } from './mailer-config.service';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    MailerModule.forRootAsync({
-      useClass: MailerConfigService,
-    }),
     PrismaModule,
     NewsletterModule,
+    MailModule,
   ],
   controllers: [],
   providers: [],

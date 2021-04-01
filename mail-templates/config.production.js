@@ -21,7 +21,7 @@ module.exports = {
   build: {
     templates: {
       destination: {
-        path: '../src/templates',
+        path: '../src/mail/templates',
         extension: 'hbs',
       },
     },

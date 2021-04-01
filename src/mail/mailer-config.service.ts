@@ -2,6 +2,7 @@ import { ConfigService } from '@nestjs/config';
 import { MailerOptions, MailerOptionsFactory } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { join } from 'path';
 
 @Injectable()
 export class MailerConfigService implements MailerOptionsFactory {
@@ -22,7 +23,7 @@ export class MailerConfigService implements MailerOptionsFactory {
         from: `"notiz.dev" <${this.configService.get('MAIL_USER')}>`,
       },
       template: {
-        dir: `${process.cwd()}/src/templates/`,
+        dir: join(__dirname, 'templates'),
         adapter: new HandlebarsAdapter(),
         options: { strict: true },
       },
