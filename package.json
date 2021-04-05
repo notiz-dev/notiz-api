@@ -38,6 +38,7 @@
     "@nestjs/core": "7.6.15",
     "@nestjs/platform-express": "7.6.15",
     "@nestjs/swagger": "4.8.0",
+    "@octokit/rest": "^18.5.2",
     "@prisma/client": "2.20.1",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",

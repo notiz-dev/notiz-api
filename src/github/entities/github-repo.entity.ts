@@ -74,8 +74,8 @@ export class GitHubRepo {
   open_issues: number;
   watchers: number;
   default_branch: string;
-  temp_clone_token: any;
-  organization: Organization;
+  temp_clone_token?: any;
+  organization?: Organization;
   network_count: number;
   subscribers_count: number;
 }

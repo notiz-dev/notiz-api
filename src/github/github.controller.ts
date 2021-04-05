@@ -1,18 +1,16 @@
-import { Controller, Get, HttpService, Param } from '@nestjs/common';
-import { map } from 'rxjs/operators';
+import { Controller, Get, Param } from '@nestjs/common';
 import { GitHubRepo } from './entities/github-repo.entity';
+import { GithubService } from './github.service';
 
 @Controller('github')
 export class GithubController {
-  private githubApi = 'https://api.github.com';
+  constructor(private githubService: GithubService) {}
 
-  constructor(private httpService: HttpService) {}
-
-  @Get('/repos/:repo')
-  async repo(@Param('repo') repo: string) {
-    // TODO add auth token
-    return this.httpService
-      .get<GitHubRepo>(`${this.githubApi}/repos/${repo}`)
-      .pipe(map((response) => response.data));
+  @Get('/repos/:owner/:repo')
+  async repo(
+    @Param('owner') owner: string,
+    @Param('repo') repo: string,
+  ): Promise<GitHubRepo> {
+    return this.githubService.repo(owner, repo);
   }
 }
