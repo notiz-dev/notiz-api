@@ -1,4 +1,5 @@
-import { Organization } from "./github-organization.entity";
+import { GitHubLicense } from './github-license.entity';
+import { GitHubOrganization } from './github-organization.entity';
 
 export class GitHubRepo {
   id: number;
@@ -6,7 +7,7 @@ export class GitHubRepo {
   name: string;
   full_name: string;
   private: boolean;
-  owner: Organization;
+  owner: GitHubOrganization;
   html_url: string;
   description: string;
   fork: boolean;
@@ -65,19 +66,17 @@ export class GitHubRepo {
   has_wiki: boolean;
   has_pages: boolean;
   forks_count: number;
-  mirror_url: any;
+  mirror_url: string;
   archived: boolean;
   disabled: boolean;
   open_issues_count: number;
-  license: any;
+  license: GitHubLicense;
   forks: number;
   open_issues: number;
   watchers: number;
   default_branch: string;
-  temp_clone_token?: any;
-  organization?: Organization;
+  temp_clone_token?: string;
+  organization?: GitHubOrganization;
   network_count: number;
   subscribers_count: number;
 }
-
-
