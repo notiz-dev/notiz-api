@@ -1,7 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { GitHubRepo } from './entities/github-repo.entity';
 import { GithubService } from './github.service';
 
+@ApiTags('GitHub')
 @Controller('github')
 export class GithubController {
   constructor(private githubService: GithubService) {}
