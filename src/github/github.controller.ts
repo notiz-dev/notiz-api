@@ -1,4 +1,11 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  CacheInterceptor,
+  CacheTTL,
+  Controller,
+  Get,
+  Param,
+  UseInterceptors,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { GitHubRepo } from './entities/github-repo.entity';
 import { GithubService } from './github.service';
@@ -9,6 +16,7 @@ export class GithubController {
   constructor(private githubService: GithubService) {}
 
   @Get('/repos/:owner/:repo')
+  @UseInterceptors(CacheInterceptor)
   async repo(
     @Param('owner') owner: string,
     @Param('repo') repo: string,

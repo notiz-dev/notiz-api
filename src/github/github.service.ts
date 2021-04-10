@@ -19,6 +19,7 @@ export class GithubService {
   async repo(owner: string, repo: string): Promise<GitHubRepo> {
     try {
       const response = await this.octokit.rest.repos.get({ owner, repo });
+      console.log("fetch repo from github api", response.headers);
       return response.data;
     } catch (e) {
       if (e.status === 404) {
