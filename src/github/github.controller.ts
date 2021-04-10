@@ -17,6 +17,7 @@ export class GithubController {
 
   @Get('/repos/:owner/:repo')
   @UseInterceptors(CacheInterceptor)
+  @CacheTTL(86400)
   async repo(
     @Param('owner') owner: string,
     @Param('repo') repo: string,

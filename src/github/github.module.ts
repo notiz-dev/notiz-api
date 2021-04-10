@@ -3,7 +3,7 @@ import { GithubController } from './github.controller';
 import { GithubService } from './github.service';
 
 @Module({
-  imports: [CacheModule.register({ ttl: 86400 })],
+  imports: [CacheModule.register()],
   controllers: [GithubController],
   providers: [GithubService],
 })
