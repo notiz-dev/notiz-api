@@ -14,7 +14,7 @@ services:
 
   postgres:
     image: postgres:13
-    container_name: postgresprisma
+    container_name: notiz-api-db
     restart: always
     ports:
       - 5432:5432

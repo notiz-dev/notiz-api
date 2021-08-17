@@ -10,7 +10,6 @@ import { GithubModule } from './github/github.module';
     ConfigModule.forRoot({ isGlobal: true }),
     PrismaModule,
     NewsletterModule,
-    MailModule,
     GithubModule,
   ],
   controllers: [],

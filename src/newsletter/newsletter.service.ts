@@ -1,10 +1,10 @@
+import { MailService } from './../mail/mail.service';
 import { PrismaService } from 'nestjs-prisma';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
 export class NewsletterService {
-  constructor(private prisma: PrismaService, private mailer: MailerService) {}
+  constructor(private prisma: PrismaService, private mail: MailService) {}
 
   async subscribe(email: string) {
     let subscription = await this.prisma.newsletter.findUnique({
@@ -17,15 +17,7 @@ export class NewsletterService {
       });
     }
 
-    await this.mailer.sendMail({
-      to: email,
-      subject: 'notiz.dev Newsletter: Please Confirm your Subscription',
-      template: 'confirm-subscription',
-      context: {
-        email: email,
-        uuid: subscription.id,
-      },
-    });
+    await this.mail.newsletterConfirmationMail(email, subscription.id);
   }
 
   async confirm(uuid: string) {
