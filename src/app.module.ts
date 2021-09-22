@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from 'nestjs-prisma';
 import { NewsletterModule } from './newsletter/newsletter.module';
 import { GithubModule } from './github/github.module';
+import { AnalyticsController } from './analytics/analytics.controller';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 @Module({
   imports: [
@@ -10,8 +12,8 @@ import { GithubModule } from './github/github.module';
     PrismaModule,
     NewsletterModule,
     GithubModule,
+    AnalyticsModule,
   ],
-  controllers: [],
   providers: [],
 })
 export class AppModule {}
