@@ -11,7 +11,11 @@ export class AnalyticsService {
   topPages(period: Period) {
     return this.http
       .get<AnalyticsPageRequest>(
-        `https://analytics.notiz.dev/api/v1/stats/breakdown?site_id=notiz.dev&period=${period}&property=event:page`,
+        `${this.config.get(
+          'PLAUSIBLE_HOST',
+        )}/api/v1/stats/breakdown?site_id=${this.config.get(
+          'PLAUSIBLE_SITE_ID',
+        )}&period=${period}&property=event:page`,
         {
           headers: {
             Authorization: `Bearer ${this.config.get('PLAUSIBLE_TOKEN')}`,
