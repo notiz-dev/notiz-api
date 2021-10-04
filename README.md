@@ -5,7 +5,7 @@
 ```bash
 npm i
 
-cd mail-templates
+cd newsletter
 npm i
 
 cd ..
@@ -18,7 +18,7 @@ See Swagger APi [localhost:3000/api](http://localhost:3000/api).
 ## Email Templates
 
 ```bash
-cd mail-templates
+cd newsletter
 
 npm run watch
 
