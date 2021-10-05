@@ -10,7 +10,6 @@
 */
 
 module.exports = {
-  baseImageURL: 'http://localhost:4200/assets/',
   notiz: {
     website: 'http://localhost:4200',
     mail: 'hi@notiz.dev',

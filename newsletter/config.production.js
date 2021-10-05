@@ -10,7 +10,6 @@
 */
 
 module.exports = {
-  baseImageURL: 'https://notiz.dev/assets/',
   notiz: {
     website: 'https://notiz.dev',
     mail: 'hi@notiz.dev',
