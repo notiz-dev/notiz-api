@@ -5,6 +5,6 @@ body {
 }
 
 img {
-  border: 0;
   @apply max-w-full leading-full align-middle;
+  border: 0;
 }

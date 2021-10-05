@@ -17,7 +17,6 @@ module.exports = {
     github: 'https://github.com/notiz-dev',
     twitter: 'https://twitter.com/notiz_dev',
   },
-  baseApiURL: 'http://localhost:3000',
   build: {
     templates: {
       destination: {

@@ -1,0 +1,5 @@
+@layer utilities {
+  .mso-leading-exactly {
+    mso-line-height-rule: exactly;
+  }
+}
