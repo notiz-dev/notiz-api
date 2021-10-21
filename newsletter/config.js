@@ -27,5 +27,8 @@ module.exports = {
         destination: 'images',
       },
     },
+    components: {
+      root: 'src/components',
+    },
   },
 };
