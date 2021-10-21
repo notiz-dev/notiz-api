@@ -16,4 +16,20 @@ export class MailService {
       },
     });
   }
+
+  async sendNewsletterMail(
+    email: string,
+    subscriptionId: string,
+    newsletterName: string,
+    subject: string,
+  ) {
+    await this.mailer.sendMail({
+      to: email,
+      subject: subject,
+      template: `./${newsletterName}`,
+      context: {
+        uuid: subscriptionId,
+      },
+    });
+  }
 }

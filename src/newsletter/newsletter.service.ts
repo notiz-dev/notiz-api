@@ -40,4 +40,24 @@ export class NewsletterService {
       throw new BadRequestException();
     }
   }
+
+  async sendNewsletter(newsletter: string, subject: string) {
+    const subscribers = await this.prisma.newsletter.findMany({
+      where: { subscribed: true },
+    });
+
+    for await (const subscriber of subscribers) {
+      try {
+        await this.mail.sendNewsletterMail(
+          subscriber.email,
+          subscriber.id,
+          'first-newsletter',
+          subject,
+        );
+      } catch (error) {}
+    }
+
+    const subscriberCount = subscribers.length;
+    console.log(subscriberCount);
+  }
 }
