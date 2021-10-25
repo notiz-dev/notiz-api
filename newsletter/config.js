@@ -16,6 +16,10 @@ module.exports = {
     github: 'https://github.com/notiz-dev',
     twitter: 'https://twitter.com/notiz_dev',
   },
+  urlParameters: {
+    utm_source: 'newsletter',
+    utm_medium: 'email',
+  },
   build: {
     templates: {
       source: 'src/templates',

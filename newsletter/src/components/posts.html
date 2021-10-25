@@ -1,0 +1,38 @@
+<tr>
+  <td class="h-32"></td>
+</tr>
+<tr>
+  <td>
+    <h2 class="text-gray-900 dark:text-white">Latest Posts</h2>
+    <table class="w-full">
+      <each loop="post in page.posts">
+        <if condition="!loop.first">
+          <tr>
+            <td class="h-12"></td>
+          </tr>
+        </if>
+        <tr>
+          <td class="p-24 bg-gray-100 dark:bg-gray-900 rounded">
+            <a
+              href="{{page.notiz.website}}{{post.link}}"
+              class="text-base no-underline text-gray-900 dark:text-white"
+            >
+              <p class="m-0 mb-4 text-sm text-gray-600 dark:text-gray-500">
+                {{ post.date}}
+              </p>
+              <h2 class="m-0 mb-24 text-2xl text-primary leading-24">
+                {{ post.title}}
+              </h2>
+              <p class="m-0 mb-24 text-base">{{ post.description}}</p>
+
+              <p>
+                <span class="text-primary">&rarr;</span>
+                Read more
+              </p>
+            </a>
+          </td>
+        </tr>
+      </each>
+    </table>
+  </td>
+</tr>

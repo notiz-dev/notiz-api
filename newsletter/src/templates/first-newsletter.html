@@ -1,57 +1,18 @@
 ---
 title: 'First Newsletter'
 preheader: 'Finally, first newsletter from notiz.dev is here.'
+content: first-newsletter.md
+urlParameters:
+  utm_campaign: first-newsletter
+posts:
+    - title: Media Queries with RxJS
+      description: 'Media Queries | Practical examples with RxJS'
+      date: 23 September 2021
+      link: /blog/media-observable
+    - title: 'NestJS: Type-safe File Uploads'
+      description: 'Learn how to apply Swagger decorators for type-safe file upload endpoints.'
+      date: 26 August 2021
+      link: /blog/type-safe-file-uploads
 ---
 
-<extends src="src/layouts/main.html">
-  <block name="template">
-    <table class="w-full font-sans">
-      <tr>
-        <td align="center" class="bg-cool-gray-200">
-          <table class="w-600 sm:w-full">
-            <component src="logo.html"></component>
-            <tr>
-              <td align="center" class="sm:px-24">
-                <table class="w-full">
-                  <tr>
-                    <td
-                      class="
-                        bg-gray-100
-                        text-gray-900
-                        dark:bg-gray-900 dark:text-white
-                        text-base text-left
-                        p-32
-                        sm:px-16
-                        leading-24
-                        rounded
-                      "
-                    >
-                      <table class="w-full">
-                        <tr>
-                          <td>
-                            <h1>{{{ page.title }}}</h1>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="prose">
-                            <md src="src/content/first-newsletter.md"></md>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <component src="posts/latest-posts-1.html"></component>
-                  <component src="footer.html"></component>
-                  <component src="unsubscribe.html"></component>
-                  <tr>
-                    <td class="h-48"></td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </block>
-</extends>
+<extends src="src/layouts/newsletter.html"> </extends>
