@@ -26,7 +26,7 @@ export class MailService {
     await this.mailer.sendMail({
       to: email,
       subject: subject,
-      template: `./${newsletterName}`,
+      template: `./newsletter/${newsletterName}`,
       context: {
         uuid: subscriptionId,
       },
