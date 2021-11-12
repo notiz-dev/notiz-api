@@ -2,7 +2,7 @@ Hi there,
 
 umm (_awkward silence_) you may have noticed we have been quiet with our newsletter (yet). But wait we got some news...
 
-We're excited to finally launch our **Newsletter** 😎 (better late than never!?). Thank you all for being patient with us. It has already been 1 and a half year 🤯 since we started [notiz.dev](https://notiz.dev) back in **March 2020**.
+We're excited to finally launch our **Newsletter** 😎 (better late than never!?). Thank you all for being patient with us. It has already been 1 and a half years 🤯 since we started [notiz.dev](https://notiz.dev) back in **March 2020**.
 
 Thanks to you it has been an **amazing** journey for us. A lot has happened since we started and here is a quick recap ⏪
 
