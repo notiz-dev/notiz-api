@@ -18,7 +18,12 @@
               class="text-base no-underline text-gray-900 dark:text-white"
             >
               <p class="m-0 mb-4 text-sm text-gray-600 dark:text-gray-500">
-                {{ post.date}}
+                <if condition="post.preview">
+                  <span class="font-bold">PREVIEW</span>
+                </if>
+                <else>
+                  <span>{{post.date}}</span>
+                </else>
               </p>
               <h2 class="m-0 mb-24 text-2xl text-primary leading-24">
                 {{ post.title}}
