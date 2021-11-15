@@ -26,7 +26,9 @@ export class MailService {
     await this.mailer.sendMail({
       to: email,
       subject: subject,
-      template: `./newsletter/${newsletterName}`,
+      // TODO subfolders are not supported with nest-mailer@1.6.0
+      // template: `./newsletter/${newsletterName}.hbs`,
+      template: `./${newsletterName}.hbs`,
       context: {
         uuid: subscriptionId,
       },
