@@ -1,9 +1,11 @@
 import { MailService } from './../mail/mail.service';
 import { PrismaService } from 'nestjs-prisma';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class NewsletterService {
+  private readonly logger = new Logger(NewsletterService.name);
+
   constructor(private prisma: PrismaService, private mail: MailService) {}
 
   async subscribe(email: string) {
@@ -46,18 +48,25 @@ export class NewsletterService {
       where: { subscribed: true },
     });
 
+    let emailSend = 0;
+
     for await (const subscriber of subscribers) {
       try {
         await this.mail.sendNewsletterMail(
           subscriber.email,
           subscriber.id,
-          'first-newsletter',
+          newsletter,
           subject,
         );
-      } catch (error) {}
+        emailSend++;
+        this.logger.debug('Sending newsletter');
+      } catch (error) {
+        this.logger.error('Sending newsletter failed', error);
+      }
     }
 
-    const subscriberCount = subscribers.length;
-    console.log(subscriberCount);
+    this.logger.debug(
+      `Total subscriber count ${subscribers.length} and send mails ${emailSend}`,
+    );
   }
 }
