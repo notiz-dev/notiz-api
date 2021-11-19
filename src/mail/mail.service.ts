@@ -5,7 +5,7 @@ import { Injectable } from '@nestjs/common';
 export class MailService {
   constructor(private mailer: MailerService) {}
 
-  async newsletterConfirmationMail(email: string, subscriptionId: string) {
+  async subscriptionConfirmationMail(email: string, subscriptionId: string) {
     await this.mailer.sendMail({
       to: email,
       subject: 'notiz.dev Newsletter: Please Confirm your Subscription',

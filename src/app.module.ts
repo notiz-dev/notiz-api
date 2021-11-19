@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from 'nestjs-prisma';
-import { NewsletterModule } from './newsletter/newsletter.module';
+import { SubscriptionModule } from './subscription/subscription.module';
 import { GithubModule } from './github/github.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 
@@ -9,7 +9,7 @@ import { AnalyticsModule } from './analytics/analytics.module';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     PrismaModule,
-    NewsletterModule,
+    SubscriptionModule,
     GithubModule,
     AnalyticsModule,
   ],

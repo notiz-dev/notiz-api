@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('Seeding...');
 
-  await prisma.newsletter.create({
+  await prisma.subscription.create({
     data: { email: 'hi@notiz.dev' },
   });
 }
