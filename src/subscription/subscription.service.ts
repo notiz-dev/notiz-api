@@ -4,8 +4,6 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class SubscriptionService {
-  private readonly logger = new Logger(SubscriptionService.name);
-
   constructor(private prisma: PrismaService, private mail: MailService) {}
 
   async subscribe(email: string) {
@@ -41,32 +39,5 @@ export class SubscriptionService {
     } catch (error) {
       throw new BadRequestException();
     }
-  }
-
-  async sendNewsletter(newsletter: string, subject: string) {
-    const subscribers = await this.prisma.subscription.findMany({
-      where: { subscribed: true },
-    });
-
-    let emailSend = 0;
-
-    for await (const subscriber of subscribers) {
-      try {
-        await this.mail.sendNewsletterMail(
-          subscriber.email,
-          subscriber.id,
-          newsletter,
-          subject,
-        );
-        emailSend++;
-        this.logger.debug('Sending newsletter');
-      } catch (error) {
-        this.logger.error('Sending newsletter failed', error);
-      }
-    }
-
-    this.logger.debug(
-      `Total subscriber count ${subscribers.length} and send mails ${emailSend}`,
-    );
   }
 }

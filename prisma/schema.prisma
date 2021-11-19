@@ -16,3 +16,13 @@ model Subscription {
 
   subscribed Boolean @default(false)
 }
+
+model Newsletter {
+  id             String   @id @default(cuid())
+  sentStartedAt  DateTime @default(now())
+  sentFinishedAt DateTime @updatedAt
+  newsletter     String
+  subject        String
+  subscribed     Int
+  sent           Int?
+}
