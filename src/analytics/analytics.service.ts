@@ -1,11 +1,13 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { catchError, filter, map } from 'rxjs';
+import { catchError, filter, map, of } from 'rxjs';
 import { AnalyticsPageRequest, Period } from './entities/analytics.entity';
 
 @Injectable()
 export class AnalyticsService {
+  private readonly logger = new Logger(AnalyticsService.name);
+
   constructor(private http: HttpService, private config: ConfigService) {}
 
   topPages(period: Period) {
@@ -32,6 +34,10 @@ export class AnalyticsService {
               p.page !== '/blog/',
           ),
         ),
+        catchError((error) => {
+          this.logger.error('Fetching top pages', error);
+          return of([]);
+        }),
       );
   }
 }
