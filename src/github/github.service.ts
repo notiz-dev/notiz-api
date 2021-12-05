@@ -1,4 +1,3 @@
-import { openSourceRepos } from './open-source';
 import { ConfigService } from '@nestjs/config';
 import { GitHubRepo } from './entities/github-repo.entity';
 import {
@@ -32,10 +31,11 @@ export class GithubService {
   }
 
   async openSource(): Promise<OpenSource[]> {
-    const repoRequest = openSourceRepos
-      .filter((r) => !r.private)
-      .map((r) => this.repo(r.owner, r.repo));
-    const githubRepos = await Promise.all(repoRequest);
+    const response = await this.octokit.rest.repos.listForOrg({
+      org: 'notiz-dev',
+    });
+    const githubRepos = response.data;
+
     return githubRepos
       .map((r) => {
         return {
