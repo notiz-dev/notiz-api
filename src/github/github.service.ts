@@ -36,7 +36,6 @@ export class GithubService {
       .filter((r) => !r.private)
       .map((r) => this.repo(r.owner, r.repo));
     const githubRepos = await Promise.all(repoRequest);
-    console.log('fetch github repos');
     return githubRepos
       .map((r) => {
         return {
