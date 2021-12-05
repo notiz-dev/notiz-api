@@ -41,13 +41,13 @@ export class GithubService {
         return {
           name: r.name,
           description: r.description,
-          html_url: r.html_url,
-          stargazers_count: r.stargazers_count,
+          repoUrl: r.html_url,
+          stargazersCount: r.stargazers_count,
           language: r.language,
-          default_branch: r.default_branch,
-          readme_url: `https://raw.githubusercontent.com/${r.owner.login}/${r.name}/${r.default_branch}/README.md`,
+          defaultBranch: r.default_branch,
+          readmeUrl: `https://raw.githubusercontent.com/${r.owner.login}/${r.name}/${r.default_branch}/README.md`,
         };
       })
-      .sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
+      .sort((r1, r2) => r2.stargazersCount - r1.stargazersCount);
   }
 }

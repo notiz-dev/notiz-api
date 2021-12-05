@@ -1,9 +1,9 @@
 export class OpenSource {
   name: string;
   description: string;
-  html_url: string;
-  stargazers_count: number;
+  repoUrl: string;
+  stargazersCount: number;
   language: string;
-  default_branch: string;
-  readme_url: string;
+  defaultBranch: string;
+  readmeUrl: string;
 }
