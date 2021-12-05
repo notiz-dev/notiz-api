@@ -1,3 +1,4 @@
+import { openSourceRepos } from './open-source';
 import { ConfigService } from '@nestjs/config';
 import { GitHubRepo } from './entities/github-repo.entity';
 import {
@@ -6,6 +7,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { Octokit } from '@octokit/rest';
+import { OpenSource } from './entities/open-source.entity';
 
 @Injectable()
 export class GithubService {
@@ -27,5 +29,26 @@ export class GithubService {
         throw new BadRequestException();
       }
     }
+  }
+
+  async openSource(): Promise<OpenSource[]> {
+    const repoRequest = openSourceRepos
+      .filter((r) => !r.private)
+      .map((r) => this.repo(r.owner, r.repo));
+    const githubRepos = await Promise.all(repoRequest);
+    console.log('fetch github repos');
+    return githubRepos
+      .map((r) => {
+        return {
+          name: r.name,
+          description: r.description,
+          html_url: r.html_url,
+          stargazers_count: r.stargazers_count,
+          language: r.language,
+          default_branch: r.default_branch,
+          readme_url: `https://raw.githubusercontent.com/${r.owner.login}/${r.name}/${r.default_branch}/README.md`,
+        };
+      })
+      .sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
   }
 }
