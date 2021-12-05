@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Controller, DefaultValuePipe, Get, Query } from '@nestjs/common';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
-import { map, Observable, tap, filter } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { PageRequest, Period } from './entities/analytics.entity';
 import { AnalyticsService } from './analytics.service';
 import { Post } from './entities/post.entity';
