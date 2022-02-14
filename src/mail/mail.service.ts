@@ -1,19 +1,16 @@
 import { MailerService } from '@nestjs-modules/mailer';
+import { InjectQueue } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
+import { Queue } from 'bull';
 
 @Injectable()
 export class MailService {
-  constructor(private mailer: MailerService) {}
+  constructor(@InjectQueue('mail') private mailQueue: Queue) {}
 
   async subscriptionConfirmationMail(email: string, subscriptionId: string) {
-    await this.mailer.sendMail({
-      to: email,
-      subject: 'notiz.dev Newsletter: Please Confirm your Subscription',
-      template: './confirm-subscription',
-      context: {
-        email: email,
-        uuid: subscriptionId,
-      },
+    await this.mailQueue.add('confirm-subscription', {
+      email: email,
+      subscriptionId: subscriptionId,
     });
   }
 
@@ -23,15 +20,11 @@ export class MailService {
     newsletterName: string,
     subject: string,
   ) {
-    await this.mailer.sendMail({
-      to: email,
+    await this.mailQueue.add('newsletter', {
+      email: email,
+      subscriptionId: subscriptionId,
+      newsletterName: newsletterName,
       subject: subject,
-      // TODO subfolders are not supported with nest-mailer@1.6.0
-      // template: `./newsletter/${newsletterName}.hbs`,
-      template: `./${newsletterName}.hbs`,
-      context: {
-        uuid: subscriptionId,
-      },
     });
   }
 }
