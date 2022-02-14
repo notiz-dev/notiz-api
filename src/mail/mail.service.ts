@@ -1,3 +1,4 @@
+import { IsEmail } from 'class-validator';
 import { MailerService } from '@nestjs-modules/mailer';
 import { InjectQueue } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
@@ -26,5 +27,13 @@ export class MailService {
       newsletterName: newsletterName,
       subject: subject,
     });
+  }
+
+  async sendInternalContactRequested(
+    email: string,
+    name: string,
+    message: string,
+  ) {
+    await this.mailQueue.add('contact', { email, name, message });
   }
 }

@@ -2,6 +2,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { Process, Processor } from '@nestjs/bull';
 import { Logger } from '@nestjs/common';
 import { Job } from 'bull';
+import * as dayjs from 'dayjs';
 
 interface ConfirmSubscription {
   email: string;
@@ -13,6 +14,12 @@ interface Newsletter {
   subscriptionId: string;
   subject: string;
   newsletterName: string;
+}
+
+interface Contact {
+  email: string;
+  name: string;
+  message: string;
 }
 
 @Processor('mail')
@@ -47,6 +54,22 @@ export class MailProcessor {
       template: `${newsletterName}`,
       context: {
         uuid: subscriptionId,
+      },
+    });
+  }
+
+  @Process('contact')
+  async sendContactRequested(job: Job<Contact>) {
+    const { email, name, message } = job.data;
+    await this.mailer.sendMail({
+      to: 'hi@notiz.dev',
+      subject: 'Kontaktanfrage',
+      template: 'contact',
+      context: {
+        email,
+        name,
+        message,
+        date: dayjs().format('DD.MM.YYYY HH:mm'),
       },
     });
   }

@@ -26,3 +26,12 @@ model Newsletter {
   subscribed     Int
   sent           Int?
 }
+
+model Contact {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  email String
+  name  String
+  message  String
+}

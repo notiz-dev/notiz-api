@@ -7,6 +7,7 @@ import { GithubModule } from './github/github.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { NewsletterModule } from './newsletter/newsletter.module';
 import { BullModule } from '@nestjs/bull';
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { BullModule } from '@nestjs/bull';
     NewsletterModule,
     GithubModule,
     AnalyticsModule,
+    ContactModule,
   ],
   providers: [],
 })
