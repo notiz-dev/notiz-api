@@ -1,5 +1,3 @@
-import { IsEmail } from 'class-validator';
-import { MailerService } from '@nestjs-modules/mailer';
 import { InjectQueue } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
 import { Queue } from 'bull';

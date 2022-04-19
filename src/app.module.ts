@@ -19,6 +19,7 @@ import { ContactModule } from './contact/contact.module';
           redis: {
             host: config.get('REDIS_HOST'),
             port: 6379,
+            password: config.get('REDIS_PASSWORD'),
           },
         };
       },
