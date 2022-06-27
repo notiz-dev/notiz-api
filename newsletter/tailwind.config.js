@@ -1,5 +1,5 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
   darkMode: 'media',
   theme: {
     screens: {
@@ -105,6 +105,16 @@ module.exports = {
         '3xl': '24px',
         full: '9999px',
       },
+      boxShadow: {
+        sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        DEFAULT:
+          '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+        md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+        lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+        xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
+      },
       fontFamily: {
         sans: [
           'ui-sans-serif',
@@ -125,8 +135,11 @@ module.exports = {
       },
       fontSize: {
         0: '0',
+        xxs: '11px',
         xs: '12px',
+        '2xs': '13px',
         sm: '14px',
+        '2sm': '15px',
         base: '16px',
         lg: '18px',
         xl: '20px',
@@ -139,16 +152,10 @@ module.exports = {
         '8xl': '96px',
         '9xl': '128px',
       },
-      inset: (theme) => ({
-        ...theme('spacing'),
-      }),
       letterSpacing: (theme) => ({
         ...theme('spacing'),
       }),
       lineHeight: (theme) => ({
-        ...theme('spacing'),
-      }),
-      maxHeight: (theme) => ({
         ...theme('spacing'),
       }),
       maxWidth: (theme) => ({
@@ -177,11 +184,17 @@ module.exports = {
     extend: {},
   },
   corePlugins: {
-    animation: false,
+    preflight: false,
     backgroundOpacity: false,
     borderOpacity: false,
+    boxShadow: false,
     divideOpacity: false,
     placeholderOpacity: false,
     textOpacity: false,
   },
+  plugins: [
+    require('tailwindcss-mso'),
+    require('tailwindcss-box-shadow'),
+    require('tailwindcss-email-variants'),
+  ],
 };

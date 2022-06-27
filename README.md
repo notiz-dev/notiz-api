@@ -20,10 +20,10 @@ See Swagger APi [localhost:3000/api](http://localhost:3000/api).
 ```bash
 cd newsletter
 
-npm run watch
+npm run dev
 
 # build for production, copies to Nest JS application
-npm run production
+npm run build
 ```
 
 Add handlebar placeholder using `@{{username}}` which compiles down to `{{username}}` in the mail template.
