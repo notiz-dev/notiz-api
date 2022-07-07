@@ -1,5 +1,5 @@
 <tr>
-  <td class="h-32"></td>
+  <td class="h-8"></td>
 </tr>
 <tr>
   <td>
@@ -8,16 +8,16 @@
       <each loop="post in page.posts">
         <if condition="!loop.first">
           <tr>
-            <td class="h-12"></td>
+            <td class="h-3"></td>
           </tr>
         </if>
         <tr>
-          <td class="p-24 bg-gray-100 dark:bg-gray-900 rounded">
+          <td class="p-6 bg-gray-100 dark:bg-gray-900 rounded">
             <a
               href="{{post.link}}"
               class="text-base no-underline text-gray-900 dark:text-white"
             >
-              <p class="m-0 mb-4 text-sm text-gray-600 dark:text-gray-500">
+              <p class="m-0 mb-1 text-sm text-gray-600 dark:text-gray-500">
                 <if condition="post.preview">
                   <span class="font-bold">PREVIEW</span>
                 </if>
@@ -25,10 +25,10 @@
                   <span>{{post.date}}</span>
                 </else>
               </p>
-              <h2 class="m-0 mb-24 text-2xl text-primary leading-24">
+              <h2 class="m-0 mb-6 text-2xl text-primary leading-6">
                 {{ post.title}}
               </h2>
-              <p class="m-0 mb-24 text-base">{{ post.description}}</p>
+              <p class="m-0 mb-6 text-base">{{ post.description}}</p>
 
               <p>
                 <span class="text-primary">&rarr;</span>

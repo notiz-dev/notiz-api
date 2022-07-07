@@ -8,17 +8,17 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
     <table class="w-full font-sans">
       <tr>
         <td align="center" class="bg-cool-gray-200">
-          <table class="w-600 sm:w-full">
+          <table class="w-150 sm:w-full">
             <component src="logo.html"></component>
             <tr>
-              <td align="center" class="sm:px-24">
+              <td align="center" class="sm:px-6">
                 <table class="w-full">
                   <tr>
                     <td
-                      class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white text-base text-left p-48 sm:px-24 leading-24 rounded"
+                      class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white text-base text-left p-12 sm:px-6 leading-6 rounded"
                     >
                       <p class="">Hi @{{email}}. Thanks for subscribing 👏</p>
-                      <p class="m-0 mb-24">
+                      <p class="m-0 mb-6">
                         You're almost done. Please confirm your email and hit
                         the button below. We won't spam.
                       </p>
@@ -30,7 +30,7 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                           >
                             <a
                               href="{{page.notiz.website}}/confirm-subscription?uuid=@{{uuid}}"
-                              class="block font-semibold text-white dark:text-white text-base leading-full py-16 px-24 no-underline"
+                              class="block font-semibold text-white dark:text-white text-base leading-full py-4 px-6 no-underline"
                             >
                               Confirm Email &rarr;
                             </a>
@@ -39,7 +39,7 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                       </table>
                       <table class="w-full">
                         <tr>
-                          <td class="py-32">
+                          <td class="py-8">
                             <div
                               class="bg-gray-300 dark:bg-gray-700 h-px leading-px"
                             >
@@ -48,11 +48,11 @@ preheader: 'Please confirm your email address in order to subscribe to our newsl
                           </td>
                         </tr>
                       </table>
-                      <p class="m-0 mb-16">
+                      <p class="m-0 mb-4">
                         If you received this email by mistake, simply delete it.
                         You won't be subscribed to our newsletter.
                       </p>
-                      <p class="m-0 mb-16">Thanks, <br />The notiz.dev Team</p>
+                      <p class="m-0 mb-4">Thanks, <br />The notiz.dev Team</p>
                     </td>
                   </tr>
                   <component src="footer.html"></component>
