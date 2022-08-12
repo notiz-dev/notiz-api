@@ -46,7 +46,7 @@ export class GithubService {
           language: r.language,
           defaultBranch: r.default_branch,
           readmeUrl: `https://raw.githubusercontent.com/${r.owner.login}/${r.name}/${r.default_branch}/README.md`,
-          homepage: r.homepage,
+          homepage: r.homepage ? r.homepage : null,
         };
       })
       .sort((r1, r2) => r2.stargazersCount - r1.stargazersCount);
