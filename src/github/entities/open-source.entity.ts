@@ -6,4 +6,5 @@ export class OpenSource {
   language: string;
   defaultBranch: string;
   readmeUrl: string;
+  homepage?: string;
 }
