@@ -11,7 +11,6 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "start:migrate:prod": "prisma migrate deploy && npm run start:prod",
     "serve:maizzle": "cd newsletter && npm run watch",
     "build:maizzle": "cd newsletter && npm run production",
     "seed": "ts-node prisma/seed.ts",
