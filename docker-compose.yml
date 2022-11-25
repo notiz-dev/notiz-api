@@ -13,6 +13,17 @@ services:
   #   env_file:
   #     - .env
 
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    volumes:
+      - mysql:/var/lib/mysql
+
   postgres:
     image: postgres:13
     container_name: notiz-api-db
@@ -37,6 +48,8 @@ services:
       - redis:/data
 
 volumes:
+  mysql:
+    name: mysql-db
   postgres:
     name: notiz-api-db
   redis:
