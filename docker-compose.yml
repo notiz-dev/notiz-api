@@ -23,17 +23,6 @@ services:
       - .env
     volumes:
       - mysql:/var/lib/mysql
-
-  postgres:
-    image: postgres:13
-    container_name: notiz-api-db
-    restart: always
-    ports:
-      - 5432:5432
-    env_file:
-      - .env
-    volumes:
-      - postgres:/var/lib/postgresql/data
     
   redis:
     image: redis:6
@@ -50,7 +39,5 @@ services:
 volumes:
   mysql:
     name: mysql-db
-  postgres:
-    name: notiz-api-db
   redis:
     name: nest-api-redis
