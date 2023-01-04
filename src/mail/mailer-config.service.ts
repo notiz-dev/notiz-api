@@ -20,7 +20,7 @@ export class MailerConfigService implements MailerOptionsFactory {
         },
       },
       defaults: {
-        from: `"notiz.dev" <${this.configService.get('MAIL_USER')}>`,
+        from: `"notiz.dev" <${this.configService.get('MAIL_FROM')}>`,
       },
       template: {
         dir: join(__dirname, 'templates'),
